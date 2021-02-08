@@ -32,7 +32,7 @@ jobs:
         python -m pip install httpie nuitka
     - name: Run nuitka
       run: |
-        python -m nuitka --standalone --show-scons --show-progress --assume-yes-for-downloads -o http httpie.py
+        python -m nuitka --standalone --show-scons --show-progress --assume-yes-for-downloads http.py
     - uses: actions/upload-artifact@v2
       with:
         name: httpie
