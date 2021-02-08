@@ -16,6 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Cache Build
+      uses: actions/cache@v2
+      with:
+        path: |
+          *.build
+        key: ${{ runner.os }}
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
@@ -27,5 +33,7 @@ jobs:
     - name: Run nuitka
       run: |
         python -m nuitka --standalone --show-scons --show-progress --assume-yes-for-downloads httpie.py
-        ls
-
+    - uses: actions/upload-artifact@v2
+      with:
+        name: httpie
+        path: "*.dist"
