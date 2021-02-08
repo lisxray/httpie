@@ -26,6 +26,6 @@ jobs:
         python -m pip install httpie nuitka
     - name: Run nuitka
       run: |
-        python -m nuitka --standalone --verbose httpie.py
+        python -m nuitka --standalone --show-scons --show-progress --assume-yes-for-downloads httpie.py
         ls
 
